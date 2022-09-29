@@ -10,13 +10,17 @@ import { API_URL } from "./index.js"
  */
 
 function rolNotCorrect(rols) {
-    if (rols.length < 1 || rols.length > 2 || !rols.every(val => ["estudiante", "profesor"].includes(val)))
+    if (rols.length < 1
+        || rols.length > 2
+        || !rols.every(val => ["estudiante", "profesor"].includes(val))
+        || JSON.stringify(rols) == JSON.stringify(["estudiante", "estudiante"])
+        || JSON.stringify(rols) == JSON.stringify(["profesor", "profesor"]))
         return true
     else
         return false;
 }
 
-async function authFech(args, rute, method, body = null) {
+async function authFech(rute, method, body = null) {
     const datafetched = await fetch(`${API_URL}/${rute}`, {
         method: method,
         headers: {
@@ -42,28 +46,28 @@ async function authFech(args, rute, method, body = null) {
 
 export const root = {
     user: async (args) => {
-        const res = await authFech(args, "users/" + args.nombre_usuario, "GET");
+        const res = await authFech("users/" + args.nombre_usuario, "GET");
         return res;
     },
     getToken: async (args) => {
-        const res = await authFech(args, "auth", "POST", JSON.stringify(args));
+        const res = await authFech("auth", "POST", JSON.stringify(args));
         return res;
     },
     refreshToken: async (args) => {
-        const res = await authFech(args, "auth/refresh", "POST", JSON.stringify(args));
+        const res = await authFech("auth/refresh", "POST", JSON.stringify(args));
         return res;
     },
     updateUser: async (args) => {
         var rols = []; args?.rol?.forEach(value => rols.push(value.tipo_rol));
-        if (rolNotCorrect(rols)) return {};
-        const res = await authFech(args, "users/" + args.nombre_usuario, "PUT", JSON.stringify({ rol: rols }));
+        if (rolNotCorrect(rols)) return new Error("Bad argument rol");
+        const res = await authFech("users/" + args.nombre_usuario, "PUT", JSON.stringify({ rol: rols }));
         return res;
     },
     createUser: async (args) => {
         var rols = []; args?.rol?.forEach(value => rols.push(value.tipo_rol));
-        if (rolNotCorrect(rols)) return {};
+        if (rolNotCorrect(rols)) return new Error("Bad argument rol");
         const body = { nombre_usuario: args.nombre_usuario, contrasena: args.contrasena, rol: rols };
-        const res = await authFech(args, "users", "POST", JSON.stringify(body));
+        const res = await authFech("users", "POST", JSON.stringify(body));
         return res;
     }
 }
