@@ -3,7 +3,7 @@ import { root } from "./resolver.js"
 
 
 // Expose the API URL
-export const API_URL = "http://127.0.0.1:3000"
+export const API_URL = "http://sia_session_ms:3000"
 
 // Expose the schema and the resolver
 export const SESSION = {
