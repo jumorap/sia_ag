@@ -11,6 +11,9 @@ const schema = buildSchema(`
         refreshToken(auth_token: String!): Token
         user(nombre_usuario: String!):User
     }
+    type Error{
+        error: String
+    }
     type User {
         nombre_usuario: String
         contrasena: String
@@ -24,7 +27,13 @@ const schema = buildSchema(`
     type Rol{
         tipo_rol: String
     }
-
+    input RolInput {
+        tipo_rol: String
+    }
+    type Mutation {
+        updateUser(nombre_usuario: String!, rol:[RolInput] ): User
+        createUser(nombre_usuario: String!, contrasena: String!, rol:[RolInput]!): User
+    }
 `)
 
 
