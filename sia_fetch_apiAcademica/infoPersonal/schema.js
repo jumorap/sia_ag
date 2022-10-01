@@ -1,3 +1,5 @@
+// THIS IS AN EXAMPLE FILE ONLY
+
 import { buildSchema } from "graphql"
 
 
@@ -7,7 +9,7 @@ import { buildSchema } from "graphql"
  */
 const schema = buildSchema(`
     type Query {
-        user(username: String): User
+        getUserInfo(username: String): User
     }
     type User {
         nombre_usuario: String

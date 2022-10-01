@@ -3,13 +3,18 @@ import express from "express";
 
 import { INFO_PERSONAL } from "./sia_infoPersonal/index.js";
 import { SESSION } from "./sia_session/index.js";
+import { FETCH_INFO_PERSONAL } from "./sia_fetch_apiAcademica/infoPersonal/index.js";
 
 
 const app = express()
+const port = 4000
 
 // Generate the GraphQL endpoint at /info_personal using the schema and the resolver
 app.use('/info_personal', graphqlHTTP(INFO_PERSONAL));
 app.use('/session', graphqlHTTP(SESSION));
+
+// Example to fetch data from the API ACADEMICA
+app.use('/fetch_info_personal', graphqlHTTP(FETCH_INFO_PERSONAL));
 
 /*
 TODO: Write here your GraphQL endpoint as follows:
@@ -18,4 +23,4 @@ TODO: Write here your GraphQL endpoint as follows:
 
 // Open a port to listen for requests from the client (browser), using the express app with GraphQL
 // For example: http://localhost:4000/info_personal
-app.listen(4000, () => console.log(`Now browse to localhost:4000/[endpoint_name]`))
+app.listen(port, () => console.log(`Now browse to localhost:${port}/[endpoint_name]`))
