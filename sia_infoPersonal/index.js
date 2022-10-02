@@ -1,9 +1,10 @@
 import schema from "./schema.js"
 import { root } from "./resolver.js"
+import routes from "../routes.js"
 
 
 // Expose the API URL
-export const API_URL = "http://127.0.0.1:8000"
+export const API_URL = routes.infoPersonal.url
 
 // Expose the schema and the resolver
 export const INFO_PERSONAL = {

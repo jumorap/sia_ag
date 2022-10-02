@@ -1,9 +1,10 @@
 import schema from "./schema.js"
 import { root } from "./resolver.js"
+import routes from "../routes.js"
 
 
 // Expose the API URL
-export const API_URL = "http://sia_session_ms:3000"
+export const API_URL = routes.session.url
 
 // Expose the schema and the resolver
 export const SESSION = {
@@ -52,9 +53,12 @@ mutation {
 {
   user(username: "test") {
     nombre_usuario
+    eps
+    email_personal
     vivienda {
       vivienda_tipo
       vivienda_estrato
+      vivienda_telefono
     }
   }
 }

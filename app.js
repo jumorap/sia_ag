@@ -1,5 +1,6 @@
 import { graphqlHTTP } from "express-graphql";
 import express from "express";
+import routes from "./routes.js";
 
 import { INFO_PERSONAL } from "./sia_infoPersonal/index.js";
 import { SESSION } from "./sia_session/index.js";
@@ -10,11 +11,11 @@ const app = express()
 const port = 4000
 
 // Generate the GraphQL endpoint at /info_personal using the schema and the resolver
-app.use('/info_personal', graphqlHTTP(INFO_PERSONAL));
-app.use('/session', graphqlHTTP(SESSION));
+app.use(routes.infoPersonal.route, graphqlHTTP(INFO_PERSONAL))
+app.use(routes.session.route, graphqlHTTP(SESSION))
 
 // Example to fetch data from the API ACADEMICA
-app.use('/fetch_info_personal', graphqlHTTP(FETCH_INFO_PERSONAL));
+app.use(routes.apiAcademica.infoPersonal.route, graphqlHTTP(FETCH_INFO_PERSONAL))
 
 /*
 TODO: Write here your GraphQL endpoint as follows:

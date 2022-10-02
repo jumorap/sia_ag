@@ -2,7 +2,7 @@
 
 import fetch from "node-fetch"
 import { API_URL } from "./index.js"
-import {queryGetUsersInfo, queryUpdateUser} from "./queries.js"
+import { queryGetUsersInfo, queryUpdateUser } from "./queries.js"
 
 
 /**
