@@ -1,5 +1,3 @@
-// THIS IS AN EXAMPLE FILE ONLY
-
 import fetch from "node-fetch"
 import { API_URL } from "./index.js"
 import { queryGetUsersInfo, queryUpdateUser } from "./queries.js"

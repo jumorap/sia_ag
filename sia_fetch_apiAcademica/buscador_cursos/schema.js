@@ -1,5 +1,3 @@
-// THIS IS AN EXAMPLE FILE ONLY
-
 import { buildSchema } from "graphql"
 
 

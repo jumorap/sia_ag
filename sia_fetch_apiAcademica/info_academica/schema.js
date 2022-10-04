@@ -7,9 +7,8 @@ import { buildSchema } from "graphql"
  */
 const schema = buildSchema(`
     type Query {
-        user(username: String): User
+        getUserInfo(username: String): User
     }
-    
     type User {
         nombre_usuario: String
         nombre_completo: String
@@ -29,14 +28,12 @@ const schema = buildSchema(`
         responsables: [Responsable]
         vivienda: [Vivienda]
     }
-    
     type Responsable {
         responsable_nombre: String
         responsable_tipo_doc: String
         responsable_numero_doc: String
         responsable_telefono: String
     }
-    
     type Vivienda {
         vivienda_tipo: String
         vivienda_direccion: String
@@ -45,7 +42,6 @@ const schema = buildSchema(`
         vivienda_telefono: String
         vivienda_estrato: String
     }
-    
     input ViviendaInput {
         vivienda_tipo: String
         vivienda_direccion: String
@@ -54,11 +50,9 @@ const schema = buildSchema(`
         vivienda_telefono: String
         vivienda_estrato: String
     }
-    
     type Message {
         message: String
     }
-    
     type Mutation {
         updateUser(
             nombre_usuario: String

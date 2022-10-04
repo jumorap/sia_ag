@@ -1,8 +1,20 @@
 const routes = {
   apiAcademica: {
-    infoPersonal: {
-      url: "http://127.0.0.1:4000/info_personal",
-      route: "/fetch_info_personal"
+    calificaciones: {
+      url: "http://127.0.0.1:4001/calificaciones",
+      route: "/fetch_calificaciones"
+    },
+    inscripciones: {
+        url: "http://127.0.0.1:4001/inscripciones",
+        route: "/fetch_inscripciones"
+    },
+    buscadorMaterias: {
+        url: "http://127.0.0.1:4001/buscador_cursos",
+        route: "/fetch_buscador_cursos"
+    },
+    infoAcademica: {
+        url: "http://127.0.0.1:4001/info_academica",
+        route: "/fetch_info_academica"
     }
   },
   infoPersonal: {
