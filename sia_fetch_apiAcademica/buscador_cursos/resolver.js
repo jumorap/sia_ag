@@ -1,48 +1,30 @@
 import fetch from "node-fetch"
 import { API_URL } from "./index.js"
-import { queryGetUsersInfo, queryUpdateUser } from "./queries.js"
 
 
 /**
  * Provide a resolver function for each API endpoint (query)
- * @type {{updateUser: (function(*): Promise<unknown>), getUserInfo: (function(*): Promise<unknown>)}}
- * @param {Object} args - The arguments passed in the query
+ * @type {function(*, *): Promise<void>}
  * @returns {Promise<unknown>} - The response from the API
+ * @param req - The request object
+ * @param res - The response object
  */
-export const root = {
-    getUserInfo: (user) => {
-        // Use http://localhost:4000/info_personal to get the user data via POST to request the user data in a GraphQL query
-        const query = queryGetUsersInfo(user)
+export const root = (req, res) => {
+    console.log(req.body.query)
+    console.log(API_URL)
+    // Use http://localhost:4100/buscador_cursos to get the user data via POST to request the user data in a GraphQL query
+    const query = req.body.query
 
-        return fetch(`${API_URL}/info_personal`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-            body: JSON.stringify({
-                query,
-            }),
-        })
-            .then((response) => response.json())
-            .then((response) => response.data.user)
-    },
-
-    updateUser: (args) => {
-        // use http://localhost:4000/info_personal via POST to update the user data
-        const query = queryUpdateUser(args)
-
-        return fetch(`${API_URL}/info_personal`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-            body: JSON.stringify({
-                query,
-            }),
-        })
-            .then((response) => response.json())
-            .then((response) => response.data.updateUser)
-        }
+    return fetch(`${API_URL}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
+        body: JSON.stringify({
+            query,
+        }),
+    })
+        .then((response) => response.json())
+        .then((response) => res.json(response))
 }
