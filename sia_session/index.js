@@ -15,51 +15,28 @@ export const SESSION = {
 
 
 /*
-NOTES:
-1. To update the user data, use the following query:
-mutation {
-  updateUser(
-    nombre_usuario: "test",
-    lugar_expedicion: "NEW PLACE",
-    email_personal: "NEW EMAIL",
-    telefono_movil: "NEW PHONE",
-    eps: "NEW EPS SANITAS",
-    situacion_militar: "N",
-    vivienda: [
-    {
-      vivienda_tipo: ""
-      vivienda_direccion: ""
-      vivienda_departamento: ""
-      vivienda_codigo_postal: ""
-      vivienda_telefono: ""
-      vivienda_estrato: ""
-    },
-    {
-      vivienda_tipo: "a"
-      vivienda_direccion: ""
-      vivienda_departamento: ""
-      vivienda_codigo_postal: ""
-      vivienda_telefono: ""
-      vivienda_estrato: "5"
-    },
-  ]
-  ) {
-    nombre_usuario
-    eps
-  }
-}
-
-2. To get the user data, use the following query:
 {
-  user(username: "test") {
+	getToken(nombre_usuario: "abcd", contrasena: "abcd") {
     nombre_usuario
-    eps
-    email_personal
-    vivienda {
-      vivienda_tipo
-      vivienda_estrato
-      vivienda_telefono
+    auth_token
+    rol {
+      tipo_rol
     }
   }
 }
+
+
+
+mutation {
+  createUser(nombre_usuario:"abcd", contrasena:"abcd", rol: [{
+    tipo_rol: "estudiante"
+  }]) {
+    nombre_usuario
+    contrasena
+    rol {
+      tipo_rol
+    }
+  }
+}
+
  */

@@ -1,6 +1,6 @@
 export const queryListGrades = (args) => `
     {
-      listGrades(id: "${args.id}", asignature: "${args.asignature}") {
+      listGrades(id: ${args.id}, asignature: ${args.asignature}) {
         id
         id_asignature
         name
@@ -13,7 +13,7 @@ export const queryListGrades = (args) => `
 
 export const queryListAsignatures = (args) => `
     {
-      listAsignatures(id: "${args.id}", termn: "${args.termn}") {
+      listAsignatures(id: ${args.id}, termn: "${args.termn}") {
         id
         term
         consolidated
@@ -23,7 +23,7 @@ export const queryListAsignatures = (args) => `
 
 export const queryListHistory = (args) => `
     {
-      listHistory(id: "${args.id}", program: "${args.program}") {
+      listHistory(id: ${args.id}, program: ${args.program}) {
         id
         id_student
         id_program
@@ -36,12 +36,12 @@ export const queryListHistory = (args) => `
 export const queryCreateGrades = (args) => `
     mutation {
       createGrades(
-        id: "${args.id}"
-        id_asignature: "${args.id_asignature}"
+        id: ${args.id}
+        id_asignature: ${args.id_asignature}
         name: "${args.name}"
-        percentage: "${args.percentage}"
+        percentage: ${args.percentage}
         id_students: "${args.id_students}"
-        values: "${args.values}"
+        values: ${args.values}
       ) {
         id
         id_asignature
@@ -56,12 +56,12 @@ export const queryCreateGrades = (args) => `
 export const queryUpdateGrades = (args) => `
     mutation {
       updateGrades(
-        id: "${args.id}"
-        id_asignature: "${args.id_asignature}"
+        id: ${args.id}
+        id_asignature: ${args.id_asignature}
         name: "${args.name}"
-        percentage: "${args.percentage}"
+        percentage: ${args.percentage}
         id_students: "${args.id_students}"
-        values: "${args.values}"
+        values: ${args.values}
       ) {
         id
         id_asignature
@@ -76,7 +76,7 @@ export const queryUpdateGrades = (args) => `
 export const queryDeleteGrades = (args) => `
     mutation {
       deleteGrades(
-        id: "${args.input}"
+        input: ${args.input}
       ) {
         message
       }
@@ -86,9 +86,9 @@ export const queryDeleteGrades = (args) => `
 export const queryUpdateAsignatures = (args) => `
     mutation {
       updateAsignatures(
-        id: "${args.id}"
+        id: ${args.id}
         term: "${args.term}"
-        consolidated: "${args.consolidated}"
+        consolidated: ${args.consolidated}
       ) {
         id
         term
@@ -100,10 +100,10 @@ export const queryUpdateAsignatures = (args) => `
 export const queryUpdateHistory = (args) => `
     mutation {
       updateHistory(
-        id: "${args.id}"
+        id: ${args.id}
         id_student: "${args.id_student}"
-        id_program: "${args.id_program}"
-        percentage_adv: "${args.percentage_adv}"
+        id_program: ${args.id_program}
+        percentage_adv: ${args.percentage_adv}
         asignature_taken: "${args.asignature_taken}"
       ) {
         id

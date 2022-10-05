@@ -12,3 +12,18 @@ export const FETCH_INFO_ACADEMICA = {
     rootValue: root,
     graphiql: true,
 }
+
+/*
+{
+  user(username: "pacuna") {
+    _pa
+    _papa
+    _pappi
+    _documento_identidad
+    _asignaturas {
+      _tipo
+      _codigo
+    }
+  }
+}
+ */

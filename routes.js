@@ -22,7 +22,7 @@ const routes = {
     route: "/info_personal"
   },
   session: {
-    url: "http://127.0.0.1:3000",
+    url: "http://127.0.0.1:3100",
     route: "/session"
   }
 }

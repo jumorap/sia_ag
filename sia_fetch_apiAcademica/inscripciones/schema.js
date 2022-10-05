@@ -7,61 +7,63 @@ import { buildSchema } from "graphql"
  */
 const schema = buildSchema(`
     type Query {
-        getUserInfo(username: String): User
+        cursos(id: String): CursoInscrito
     }
-    type User {
-        nombre_usuario: String
-        nombre_completo: String
-        documento_identidad: String
-        lugar_expedicion: String
-        sexo: String
-        etnia: String
-        email_personal: String
-        email_institucional: String
-        telefono_movil: String
-        fecha_nacimiento: String
-        lugar_nacimiento: String
-        nacionalidad: String
-        tipo_sangre: String
-        eps: String
-        situacion_militar: String
-        responsables: [Responsable]
-        vivienda: [Vivienda]
+    
+    type Curso {
+        id_curso: String!
+        codigo_asignatura: Int!
+        grupo: Int!
+        horarios: [Horario]
+        cupos_disponibles: Int
+        cupos_totales: Int
     }
-    type Responsable {
-        responsable_nombre: String
-        responsable_tipo_doc: String
-        responsable_numero_doc: String
-        responsable_telefono: String
+    type Horario {
+        dia: Int
+        hora_inicio: Int
+        hora_fin: Int
+        salon: String
+        documento_profesor: String
+        tipo: String
     }
-    type Vivienda {
-        vivienda_tipo: String
-        vivienda_direccion: String
-        vivienda_departamento: String
-        vivienda_codigo_postal: String
-        vivienda_telefono: String
-        vivienda_estrato: String
+    input HorarioInput {
+        dia: Int
+        hora_inicio: Int
+        hora_fin: Int
+        salon: String
+        documento_profesor: String
+        tipo: String
     }
-    input ViviendaInput {
-        vivienda_tipo: String
-        vivienda_direccion: String
-        vivienda_departamento: String
-        vivienda_codigo_postal: String
-        vivienda_telefono: String
-        vivienda_estrato: String
+    type CursoInscrito {
+        id_curso: String!
+        documento_estudiante: String!
     }
+    type Profesor {
+        documento_identidad: String!
+        nombre_completo: String!
+        email_institucional: String!
+    }
+
     type Message {
         message: String
     }
     type Mutation {
-        updateUser(
-            nombre_usuario: String
-            lugar_expedicion: String
-            email_personal: String
-            telefono_movil: String
-            eps: String
-            situacion_militar: String
-            vivienda: [ViviendaInput]
+        ingresarCurso(
+            id_curso: String!
+            codigo_asignatura: Int!
+            grupo: Int!
+            horarios: [HorarioInput]
+            cupos_disponibles: Int!
+            cupos_totales: Int!
+        ): Message
+        inscribirEstudiante(
+            id_curso: String!
+            documento_estudiante: String!
+        ): Message
+        ingresarProfesor(
+            documento_identidad: String!
+            nombre_completo: String!
+            email_institucional: String!
         ): Message
     }
 `)

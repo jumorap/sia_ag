@@ -1,69 +1,53 @@
-export const queryGetUsersInfo = (args) => `
+export const queryCursos = (args) => `
     {
-      user(username: "${args.username}") {
-        nombre_usuario
-        nombre_completo
-        documento_identidad
-        lugar_expedicion
-        sexo
-        etnia
-        email_personal
-        email_institucional
-        telefono_movil
-        fecha_nacimiento
-        lugar_nacimiento
-        nacionalidad
-        tipo_sangre
-        eps
-        situacion_militar
-        responsables {
-            responsable_nombre
-            responsable_tipo_doc
-            responsable_numero_doc
-            responsable_telefono
-        }
-        vivienda {
-            vivienda_tipo
-            vivienda_direccion
-            vivienda_departamento
-            vivienda_codigo_postal
-            vivienda_telefono
-            vivienda_estrato
-        }
+      cursos(id: "${args.id}") {
+        id_curso
+        documento_estudiante
       }
     }
 `
 
-export const queryUpdateUser = (args) => `
+export const queryIngresaCurso = (args) => `
     mutation {
-      updateUser(
-        nombre_usuario: "${args.nombre_usuario}"
-        lugar_expedicion: "${args.lugar_expedicion}"
-        email_personal: "${args.email_personal}"
-        telefono_movil: "${args.telefono_movil}"
-        eps: "${args.eps}"
-        situacion_militar: "${args.situacion_militar}"
-        vivienda: [
-        {
-          vivienda_tipo: "p"
-          vivienda_direccion: ""
-          vivienda_departamento: ""
-          vivienda_codigo_postal: ""
-          vivienda_telefono: ""
-          vivienda_estrato: ""
-        },
-        {
-          vivienda_tipo: "a"
-          vivienda_direccion: "${args.vivienda[1].vivienda_direccion}"
-          vivienda_departamento: "${args.vivienda[1].vivienda_departamento}"
-          vivienda_codigo_postal: "${args.vivienda[1].vivienda_codigo_postal}"
-          vivienda_telefono: "${args.vivienda[1].vivienda_telefono}"
-          vivienda_estrato: "${args.vivienda[1].vivienda_estrato}"
-        },
-      ]
+      ingresarCurso(
+        id_curso: "${args.id_curso}"
+        codigo_asignatura: ${args.codigo_asignatura}
+        grupo: ${args.grupo}
+        horarios: {
+          dia: ${args.horarios.dia}
+          hora_inicio: ${args.horarios.hora_inicio}
+          hora_fin: ${args.horarios.hora_fin}
+          salon: "${args.horarios.salon}"
+          documento_profesor: "${args.horarios.documento_profesor}"
+          tipo: "${args.horarios.tipo}"
+        }
+        cupos_disponibles: ${args.cupos_disponibles}
+        cupos_totales: ${args.cupos_totales}
       ) {
-        nombre_usuario
-        eps
+        message
+      }
+    }
+`
+
+export const queryInscribirEstudiante = (args) => `
+    mutation {
+      inscribirEstudiante(
+        id_curso: "${args.id_curso}"
+        documento_estudiante: "${args.documento_estudiante}"
+      ) {
+        message
+      }
+    }
+`
+
+export const queryIngresarProfesor = (args) => `
+    mutation {
+      ingresarProfesor(
+        documento_identidad: "${args.documento_identidad}"
+        nombre_completo: "${args.nombre_completo}"
+        email_institucional: "${args.email_institucional}"
+      ) {
+        message
       }
     }
 `
