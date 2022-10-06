@@ -14,13 +14,29 @@ export const FETCH_INSCRIPCIONES = {
 }
 
 /*
+mutation{
+	ingresarCurso(id_curso: "001", codigo_asignatura: 1, grupo: 1, horarios: {
+    dia: 2
+    hora_inicio: 12
+    hora_fin: 15
+    salon: "505 aulas"
+    documento_profesor: "10897213"
+    tipo: "op"
+  }, cupos_disponibles: 20, cupos_totales: 15) {
+    message
+  }
+}
+
 mutation {
-  inscribirEstudiante(id_curso: "1234456", documento_estudiante: "192837746") {
+  inscribirEstudiante(id_curso: "001", documento_estudiante: "1") {
     message
   }
 }
 
 
-
-
+mutation {
+  inscribirEstudiante(id_curso: "1234456", documento_estudiante: "192837746") {
+    message
+  }
+}
 */

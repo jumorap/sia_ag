@@ -15,14 +15,22 @@ export const FETCH_INFO_ACADEMICA = {
 
 /*
 {
-  user(username: "pacuna") {
-    _pa
-    _papa
-    _pappi
+  user(history: 76654334, asignature: 1234456, grade: 1) {
     _documento_identidad
+    _id_historia
+    _id_programa
+    _porcentaje_avance
+    _papa
+    _pa
+    _semestreActual
+    _pappi
     _asignaturas {
-      _tipo
       _codigo
+      _nombre
+      _creditos
+      _tipo
+      _periodo
+      _esAprobada
     }
   }
 }
