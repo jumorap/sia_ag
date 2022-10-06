@@ -1,6 +1,6 @@
 export const queryGetUsersInfo = (args) => `
     {
-      user(username: "${args.username}") {
+      user(history: ${args.history}, asignature: ${args.asignature}, grade: ${args.grade}) {
         _documento_identidad
         _id_historia
         _id_programa
