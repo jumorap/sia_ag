@@ -1,11 +1,61 @@
-export const queryCursos = (args) => `
+export const queryInscripcionByCurso = (args) => `
     {
-      cursos(id: "${args.id}") {
+      inscripcionByIdCurso(id_curso: "${args.id_curso}") {
         id_curso
         documento_estudiante
       }
     }
-`
+`;
+
+export const queryObtenerProfesor = (args) => `
+    {
+      obtenerProfesor(documento_identidad: "${args.documento_identidad}") {
+        documento_identidad
+        nombre_completo
+        email_institucional
+      }
+    }
+`;
+
+export const queryHorarioByDocumentoEstudiante = (args) => `
+    {
+      horarioByDocumentoEstudiante(documento_estudiante: "${args.documento_estudiante}") {
+        horarios{
+          dia
+          hora_inicio
+          hora_fin
+          salon
+          documento_profesor
+          tipo
+        }
+        id_curso
+        codigo_asignatura
+        grupo
+        cupos_disponibles
+        cupos_totales
+      }
+    }
+`;
+
+export const queryCursosByCodigoAsignatura = (args) => `
+    {
+      cursosByCodigoAsignatura(codigo_asignatura: ${args.codigo_asignatura}) {
+        id_curso
+        codigo_asignatura
+        grupo
+        horarios{
+          dia
+          hora_inicio
+          hora_fin
+          salon
+          documento_profesor
+          tipo
+        }
+        cupos_disponibles
+        cupos_totales
+      }
+    }
+`;
 
 export const queryIngresaCurso = (args) => `
     mutation {
@@ -27,7 +77,7 @@ export const queryIngresaCurso = (args) => `
         message
       }
     }
-`
+`;
 
 export const queryInscribirEstudiante = (args) => `
     mutation {
@@ -38,7 +88,7 @@ export const queryInscribirEstudiante = (args) => `
         message
       }
     }
-`
+`;
 
 export const queryIngresarProfesor = (args) => `
     mutation {
@@ -50,4 +100,4 @@ export const queryIngresarProfesor = (args) => `
         message
       }
     }
-`
+`;
