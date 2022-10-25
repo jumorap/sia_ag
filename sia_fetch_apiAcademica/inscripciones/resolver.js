@@ -8,6 +8,7 @@ import {
   queryObtenerProfesor,
   queryCursosByCodigoAsignatura,
   queryHorarioByDocumentoEstudiante,
+  queryCursoByProfesor,
 } from "./queries.js";
 
 /**
@@ -87,5 +88,13 @@ export const root = {
 
     const response = await refFetch(query);
     return response.data.horarioByDocumentoEstudiante;
+  },
+
+  cursoByProfesor: async (args) => {
+    // Use http://
+    const query = queryCursoByProfesor(args);
+
+    const response = await refFetch(query);
+    return response.data.cursoByProfesor;
   },
 };

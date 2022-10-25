@@ -4,13 +4,14 @@ import { buildSchema } from "graphql";
  * The GraphQL schema in string form
  * @type {GraphQLSchema} schema
  */
+
 const schema = buildSchema(`
     type Query {
         inscripcionByIdCurso(id_curso: String): [CursoInscritoFilter]
         obtenerProfesor(documento_identidad: String): ProfesorOutput
         cursosByCodigoAsignatura(codigo_asignatura: Int): [Curso]
         horarioByDocumentoEstudiante(documento_estudiante: String): [Curso]
-
+        cursoByProfesor(documento_identidad: String): [Curso]
     }
     type Horario {
         dia: Int
@@ -77,6 +78,6 @@ const schema = buildSchema(`
             email_institucional: String!
         ): Message
     }
-`);
+    `);
 
 export default schema;

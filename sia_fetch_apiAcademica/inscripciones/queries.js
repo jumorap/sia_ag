@@ -101,3 +101,23 @@ export const queryIngresarProfesor = (args) => `
       }
     }
 `;
+
+export const queryCursoByProfesor = (args) => `
+{
+  cursoByProfesor(documento_identidad:"${args.documento_identidad}"){
+    id_curso
+    codigo_asignatura
+    grupo  
+    horarios {
+      dia
+      hora_inicio
+      hora_fin
+      salon
+      documento_profesor
+      tipo
+    }
+    cupos_disponibles
+    cupos_totales    
+  }
+}
+`;
