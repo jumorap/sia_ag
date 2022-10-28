@@ -1,6 +1,6 @@
 import fetch from "node-fetch"
 import { API_URL } from "./index.js"
-import { queryListGrades, queryListAsignatures, queryListHistory, queryCreateGrades, queryUpdateGrades, queryDeleteGrades, queryUpdateAsignatures, queryUpdateHistory } from "./queries.js"
+import { queryListGrades, queryListHistory, queryCreateGrades, queryUpdateGrades, queryDeleteGrades, queryUpdateHistory, queryListCourse, queryUpdateCourse, queryListAll, queryGetCourse, queryFormatStudents } from "./queries.js"
 
 
 /**
@@ -30,6 +30,15 @@ const refFetch = async (query) => {
  * @returns {Promise<json>} - The response from the API
  */
 export const root = {
+    listAll: (args) => {
+        // Use http://localhost:4001/calificaciones to get the user data via POST to request the data in a GraphQL query
+        const query = queryListAll(args)
+
+        return refFetch(query).then((response) => {
+            return response.data.listAll
+        })
+    },
+
     listGrades: (args) => {
         // Use http://localhost:4001/calificaciones to get the user data via POST to request the data in a GraphQL query
         const query = queryListGrades(args)
@@ -39,12 +48,12 @@ export const root = {
         })
     },
 
-    listAsignatures: (args) => {
+    listCourse: (args) => {
         // Use http://localhost:4001/calificaciones to get the user data via POST to request the data in a GraphQL query
-        const query = queryListAsignatures(args)
+        const query = queryListCourse(args)
 
         return refFetch(query).then((response) => {
-            return response.data.listAsignatures
+            return response.data.listCourse
         })
     },
 
@@ -84,12 +93,12 @@ export const root = {
         })
     },
 
-    updateAsignatures: (args) => {
-        // use http://localhost:4001/calificaciones via POST to update asignatures
-        const query = queryUpdateAsignatures(args)
+    updateCourse: (args) => {
+        // use http://localhost:4001/calificaciones via POST to update courses
+        const query = queryUpdateCourse(args)
 
         return refFetch(query).then((response) => {
-            return response.data.updateAsignatures
+            return response.data.updateCourse
         })
     },
 
@@ -101,4 +110,22 @@ export const root = {
             return response.data.updateHistory
         })
     },
+
+    getCourseName: (args) => {
+        // use http://localhost:4001/calificaciones via POST to update history
+        const query = queryGetCourse(args)
+
+        return refFetch(query).then((response) => {
+            return response.data.getCourseName
+        })
+    },
+
+    formatStudents: (args) => {
+        // use http://localhost:4001/calificaciones via POST to get a format to view in front
+        const query = queryFormatStudents(args)
+        
+        return refFetch(query).then((response) => {
+            return response.data.formatStudents
+        })
+    }
 }

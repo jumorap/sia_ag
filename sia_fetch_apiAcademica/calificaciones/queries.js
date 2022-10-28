@@ -1,20 +1,37 @@
+export const queryListAll = () => `
+  {
+    listAll
+    {
+      history {
+        id
+      }
+      courses {
+        id
+      }
+      grades {
+        id
+      }
+    }
+  }
+`
+
 export const queryListGrades = (args) => `
     {
-      listGrades(id: ${args.id}, asignature: ${args.asignature}) {
+      listGrades(id: ${args.id}, course: ${args.course}) {
         id
-        id_asignature
+        id_course
         name
         percentage
-        id_students
-        values
+        grades
       }
     }
 `
 
-export const queryListAsignatures = (args) => `
+export const queryListCourse = (args) => `
     {
-      listAsignatures(id: ${args.id}, termn: "${args.termn}") {
+      listCourse(id: ${args.id}, termn: "${args.termn}") {
         id
+        id_asignature
         term
         consolidated
       }
@@ -37,18 +54,16 @@ export const queryCreateGrades = (args) => `
     mutation {
       createGrades(
         id: ${args.id}
-        id_asignature: ${args.id_asignature}
+        id_course: ${args.id_course}
         name: "${args.name}"
         percentage: ${args.percentage}
-        id_students: "${args.id_students}"
-        values: ${args.values}
+        grades: "${args.grades}"
       ) {
         id
-        id_asignature
+        id_course
         name
         percentage
-        id_students
-        values
+        grades
       }
     }
 `
@@ -57,18 +72,16 @@ export const queryUpdateGrades = (args) => `
     mutation {
       updateGrades(
         id: ${args.id}
-        id_asignature: ${args.id_asignature}
+        id_course: ${args.id_course}
         name: "${args.name}"
         percentage: ${args.percentage}
-        id_students: "${args.id_students}"
-        values: ${args.values}
+        grades: "${args.grades}"
       ) {
         id
-        id_asignature
+        id_course
         name
         percentage
-        id_students
-        values
+        grades
       }
     }
 `
@@ -83,10 +96,11 @@ export const queryDeleteGrades = (args) => `
     }
 `
 
-export const queryUpdateAsignatures = (args) => `
+export const queryUpdateCourse = (args) => `
     mutation {
-      updateAsignatures(
+      updateCourse(
         id: ${args.id}
+        id_asignature: ${args.id_course}
         term: "${args.term}"
         consolidated: ${args.consolidated}
       ) {
@@ -113,4 +127,23 @@ export const queryUpdateHistory = (args) => `
         asignature_taken
       }
     }
+`
+
+export const queryGetCourse = (args) => `
+  {
+    getCourseName(id_course: ${args.id_course})
+    {message}
+  }
+`
+
+
+export const queryFormatStudents = (args) => `
+  {
+    formatStudents(course: ${args.course}, student: ${args.student}) {
+      id
+      id_student
+      id_course
+      grades
+    }
+  }
 `
