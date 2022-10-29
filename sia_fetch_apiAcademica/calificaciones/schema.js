@@ -48,7 +48,7 @@ const schema = buildSchema(`
         id_student: String
         id_program: Int
         percentage_adv: Float
-        asignature_taken: String
+        asignature_taken: [Int]
     }
     
     type Mutation {
@@ -84,7 +84,7 @@ const schema = buildSchema(`
             id_student: String
             id_program: Int
             percentage_adv: Float
-            asignature_taken: String
+            asignature_taken: [Int]
             ): History
     }
 
