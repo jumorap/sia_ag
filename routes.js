@@ -24,7 +24,11 @@ const routes = {
   session: {
     url: "http://107.23.253.29:3000",
     route: "/session"
-  }
+  },
+  extComponent: {
+    url: "http://localhost:3000/soap/2D_subjects",
+    route: "/ext_component"
+  },
 }
 
 export default routes

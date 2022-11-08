@@ -9,6 +9,7 @@ import { FETCH_CALIFICACIONES } from "./sia_fetch_apiAcademica/calificaciones/in
 import { FETCH_INSCRIPCIONES } from "./sia_fetch_apiAcademica/inscripciones/index.js";
 import { FETCH_INFO_ACADEMICA } from "./sia_fetch_apiAcademica/info_academica/index.js";
 import { FETCH_BUSCADOR_CURSOS } from "./sia_fetch_apiAcademica/buscador_cursos/index.js";
+import { EXTERNAL_COMPONENT } from "./sia_2DComponent/index.js";
 
 
 const app = express()
@@ -17,6 +18,7 @@ const port = 4010
 // Generate the GraphQL endpoint at /info_personal using the schema and the resolver
 app.use(routes.infoPersonal.route, graphqlHTTP(INFO_PERSONAL))
 app.use(routes.session.route, graphqlHTTP(SESSION))
+app.use(routes.extComponent.route, graphqlHTTP(EXTERNAL_COMPONENT))
 
 
 // Example to fetch data from the API ACADEMICA
