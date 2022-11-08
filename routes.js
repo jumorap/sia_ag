@@ -24,7 +24,11 @@ const routes = {
   session: {
     url: "http://host.docker.internal:3100",
     route: "/session"
-  }
+  },
+  extComponent: {
+    url: "http://localhost:3000/soap/2D_subjects",
+    route: "/ext_component"
+  },
 }
 
 export default routes
