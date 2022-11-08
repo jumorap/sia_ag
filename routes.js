@@ -22,7 +22,7 @@ const routes = {
     route: "/info_personal"
   },
   session: {
-    url: "http://host.docker.internal:3100",
+    url: "http://107.23.253.29:3000",
     route: "/session"
   }
 }
