@@ -1,6 +1,6 @@
 import fetch from "node-fetch"
 import { API_URL } from "./index.js"
-import { queryCreateGrades, queryDeleteGrades, queryFormatStudents, queryGetCourseName, queryListAll, queryListCourse, queryListGrades, queryListHistory, queryUpdateCourse, queryUpdateGrades, queryUpdateHistory } from "./queries.js"
+import { queryCreateGrades, queryDeleteGrades, queryFormatStudents, queryGetCourseName, queryGetDocAsignatures, queryListAll, queryListCourse, queryListGrades, queryListHistory, queryUpdateCourse, queryUpdateGrades, queryUpdateHistory } from "./queries.js"
 
 /**
  * Provide a resolver function for each API endpoint (query)
@@ -127,5 +127,13 @@ export const root = {
         return refFetch(query).then((response) => {
             return response.data.updateHistory
         })
-    }
+    },
+
+    getDocAsignatures: (args) => {
+        const query = queryGetDocAsignatures(args.documento_identidad)
+        return refFetch(query).then((response) => {
+            return response.data.getDocAsignatures
+        })
+
+    },
 }
