@@ -31,6 +31,11 @@ export const FETCH_INFO_ACADEMICA = {
       _tipo
       _periodo
       _esAprobada
+      _calificaciones {
+        _nombre
+        _nota
+        _porcentaje
+      }
     }
   }
 }

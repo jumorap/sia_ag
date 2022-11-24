@@ -34,8 +34,6 @@ export const root = {
         // Use http://localhost:4001/info_academica to get the user data via POST to request the user data in a GraphQL query
         const query = queryGetUsersInfo(user)
 
-        return refFetch(query).then((response) => {
-            return response.data.user
-        })
+        return refFetch(query).then((response) => response.data)
     },
 }
