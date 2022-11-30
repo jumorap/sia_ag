@@ -6,7 +6,7 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
-EXPOSE 4000
+EXPOSE 4010
 CMD [ "npm", "start" ]
 
 # docker build -t sia_general_ag .
