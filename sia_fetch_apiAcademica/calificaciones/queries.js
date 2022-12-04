@@ -70,6 +70,7 @@ export const queryFormatStudents = (args) => `
     {
       id
       id_student
+      name_asignature
       id_course
       grades
     }
