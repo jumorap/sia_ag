@@ -21,6 +21,7 @@ _asignaturasInscritas {
 }
 _asignaturas{
   _codigo
+  _id_asignature
 _nombre
 _creditos
 _tipo
