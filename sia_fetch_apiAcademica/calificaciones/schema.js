@@ -9,7 +9,7 @@ const schema = buildSchema(`
     type Query {
         listAll: All
         listGrades(id: Int, course: String): [Grade]
-        listCourse(id: Int, termn: String): [Course]
+        listCourse(id: String, termn: String): [Course]
         listHistory(id_student: String, program: Int): [History]
         getCourseName(id_course: String): Message
         formatStudents(course: String, student: String): [StudentsGrade]
