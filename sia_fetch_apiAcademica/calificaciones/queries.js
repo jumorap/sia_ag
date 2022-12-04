@@ -44,7 +44,7 @@ export const queryListCourse = (args) => `
 
 export const queryListHistory = (args) => `
   {
-    listHistory(id: ${args.id}, program: ${args.program})
+    listHistory(id_student: "${args.id}", program: ${args.program})
     {
       id
       id_student
