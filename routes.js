@@ -26,7 +26,7 @@ const routes = {
     route: "/session",
   },
   extComponent: {
-    url: "http://34.125.85.16:3000/soap/2D_subjects",
+    url: "http://sia-interface:3000/soap/2D_subjects",
     route: "/ext_component",
   },
 };
