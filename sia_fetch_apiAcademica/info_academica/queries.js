@@ -1,6 +1,6 @@
-export const queryGetUsersInfo = (args) => `
+export const queryGetHistory = (args) => `
 {
-  getHistory(id: "${args}") {
+  getHistory(id: "${args.id}") {
     _documento_identidad
 _id_historia
 _id_programa
@@ -11,6 +11,7 @@ _semestreActual
 _pappi
 _asignaturasInscritas {
   _codigo
+  _id_asignature
   _nombre
   _creditos
   _tipo
