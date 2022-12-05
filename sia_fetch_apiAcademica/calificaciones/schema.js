@@ -12,7 +12,8 @@ const schema = buildSchema(`
         listCourse(id: String, termn: String): [Course]
         listHistory(id_student: String, program: Int): [History]
         getCourseName(id_course: String): Message
-        formatStudents(course: String, student: String): [StudentsGrade]
+        getStudents(id_course: String): [CursoInscritoFilter]
+        formatStudents(student: String, course: String): [StudentsGrade]
         getDocAsignatures(documento_identidad: String): [DocAsignatures]
     }
 
@@ -20,13 +21,16 @@ const schema = buildSchema(`
         id_curso: String
         documento_profesor: String
         codigo_asignatura: Int
-        nameCourse: String
+    }
+
+    type CursoInscritoFilter {
+        id_curso: String
+        documento_estudiante: String
     }
 
     type StudentsGrade {
         id: Int
         id_student: String
-        name_asignature: String
         id_course: String
         grades: String
     }
@@ -93,7 +97,7 @@ const schema = buildSchema(`
             id_student: String
             id_program: Int
             percentage_adv: Float
-            asignature_taken: [Int]
+            asignature_taken: String
             ): History
     }
 

@@ -70,7 +70,6 @@ export const queryFormatStudents = (args) => `
     {
       id
       id_student
-      name_asignature
       id_course
       grades
     }
@@ -164,7 +163,6 @@ export const queryGetDocAsignatures = (args) => `
         id_curso
         documento_profesor
         codigo_asignatura
-        nameCourse
     }
   }
 `
